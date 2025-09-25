@@ -24,7 +24,7 @@ import { Player } from "@/components/Player.jsx";
         <main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto">
           <slot />
         </main>
-      <footer class="[grid-area:player] min-h-[100px]">
+      <footer class="[grid-area:player]">
         <Player client:load transition:name="media-player" transition:persist />
         <!-- Cuando haya una transicion entre paginas, quiero que persistas este componente. Para recuperar su estado, es decir, por donde va la canción -->
 
