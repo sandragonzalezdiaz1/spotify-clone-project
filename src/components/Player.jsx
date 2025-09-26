@@ -2,14 +2,22 @@ import { usePlayerStore } from "@/store/playerStore.js"; //Estado global gestion
 import { useRef, useEffect, useState } from "react"; //Hooks de React
 import { Slider } from "./Slider"; //Componente de tipo barra deslizante para controlar tiempo/volumen
 
-export const Pause = () => (
-  <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
+export const Pause = ({ className }) => (
+  <svg
+    className={className}
+    role="img"
+    height="16"
+    width="16"
+    aria-hidden="true"
+    viewBox="0 0 16 16"
+  >
     <path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7z"></path>
   </svg>
 );
 
-export const Play = () => (
+export const Play = ({ className }) => (
   <svg
+    className={className}
     role="img"
     height="16"
     width="16 "
@@ -80,43 +88,44 @@ const SongControl = ({ audio }) => {
     return () =>
       audio.current.removeEventListener("timeupdate", handleTimeUpdate);
   }, []); //Cada vez que cambia el tiempo de reproducción, actualiza el estado currentTime
-  
-  //Actualizamos el estado de la barra de audio 
+
+  //Actualizamos el estado de la barra de audio
   const handleTimeUpdate = () => {
-    setCurrentTime(audio.current.currentTime) //currentTime devuelve el tiempo en segundos, hay que transformarlo
+    setCurrentTime(audio.current.currentTime); //currentTime devuelve el tiempo en segundos, hay que transformarlo
     //Ej: 148s -> 2:28
-  }
+  };
 
   //Formateamos los segundos en min:seg
-  const formatTime = time => {
-    if(time == null) return '00:00'
+  const formatTime = (time) => {
+    if (time == null) return "00:00";
 
-    const seconds = Math.floor(time % 60)
-    const minutes = Math.floor(time / 60)
-    return `${minutes}: ${seconds.toString().padStart(2,"0")}`
-  }
+    const seconds = Math.floor(time % 60);
+    const minutes = Math.floor(time / 60);
+    return `${minutes}: ${seconds.toString().padStart(2, "0")}`;
+  };
 
-  const duration = audio?.current?.duration ?? 0
+  const duration = audio?.current?.duration ?? 0;
 
   //Muestra el tiempo actual, la barra de progreso y la duración total
   //Al mover el Slider, cambia currentTime en el audio
   return (
     <div className="flex gap-x-3 text-xs pt-2">
-      <span className="opacity-50 w-12 text-right">{formatTime(currentTime)}</span>
+      <span className="opacity-50 w-12 text-right">
+        {formatTime(currentTime)}
+      </span>
       <Slider
-        defaultValue={[0]}
-        max={audio?.current?.duration ?? 0} 
-        min={0}
         value={[currentTime]}
-        className="w-[500px]"
+        max={audio?.current?.duration ?? 0}
+        min={0}
+        className="w-[400px]"
         onValueChange={(value) => {
-          const [newCurrentTime] = value 
-          audio.current.currentTime = newCurrentTime
+          const [newCurrentTime] = value;
+          audio.current.currentTime = newCurrentTime;
         }}
       />
       <span className="opacity-50 w-12">
-        {duration ? formatTime(duration): '0:00'}
-        </span>
+        {duration ? formatTime(duration) : "0:00"}
+      </span>
     </div>
   );
 };
@@ -173,7 +182,6 @@ export function Player() {
 
   const audioRef = useRef(null); //Creamos una referencia al elemento audio
 
-
   useEffect(() => {
     isPlaying
       ? audioRef.current.play().catch((err) => {
@@ -203,8 +211,8 @@ export function Player() {
   };
 
   return (
-    <div className="flex flex-row justify-between w-full px-4 z-50">
-      <div>
+    <div className="flex flex-row justify-between w-full px-2 z-50">
+      <div className="w-[200px]">
         <CurrentSong {...currentMusic.song} />
       </div>
 
@@ -224,7 +232,6 @@ export function Player() {
       <div className="grid place-content-center">
         <VolumeControl />
       </div>
-      
     </div>
   );
 }
