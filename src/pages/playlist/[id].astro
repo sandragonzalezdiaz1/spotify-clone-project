@@ -1,67 +1,70 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { allPlaylists, songs } from '@/lib/data.ts';
-import { CardPlayButton } from '@/components/CardPlayButton'; //Es un archivo JSX
-import MusicsTable from '@/components/MusicsTable.astro' //No hace falta poner {}, porque es un Astro component y tiene export por defecto
-
+import Layout from "../../layouts/Layout.astro";
+import { allPlaylists, songs } from "@/lib/data.ts";
+import { CardPlayButton } from "@/components/CardPlayButton";
+import MusicsTable from "@/components/MusicsTable.astro";
 
 const { id } = Astro.params;
 
-const playlist = allPlaylists.find((playlist) => playlist.id === id)
-const playlistSongs = songs.filter(song => song.albumId === playlist?.albumId)
+const playlist = allPlaylists.find((playlist) => playlist.id === id);
+const playlistSongs = songs.filter(
+  (song) => song.albumId === playlist?.albumId
+);
+
+//const colorPlaylist = playlist?.color;
 
 ---
 
 <Layout title="Spotify Clone">
-    <div id="playlist-container"
+  <div
+    id="playlist-container"
     class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden"
     transition:name=`playlist ${id} box`
-    >
-    <!-- <Page Header/> -->
-
+  >
     <header class="flex flex-row gap-8 px-6 mt-12">
-        <picture class="aspect-square w-52 h-52 flex-none">
-        <img src={playlist?.cover} alt={`Cover of ${playlist?.title}`} class="object-cover w-full h-full shadow-lg"
-        transition:name=`playlist ${playlist?.id} image` /> 
-    </picture>
+      <picture class="aspect-square w-52 h-52 flex-none">
+        <img
+          src={playlist?.cover}
+          alt={`Cover of ${playlist?.title}`}
+          class="object-cover w-full h-full shadow-lg"
+          transition:name=`playlist ${playlist?.id} image`
+        />
+      </picture>
 
-    <div class="flex flex-col justify-between">
+      <div class="flex flex-col justify-between">
         <h2 class="flex flex-1 items-end">Playlist</h2>
         <div>
-            <h1 class="text-5xl font-bold block text-white">
-        {playlist?.title}
-        <span transition:name=`playlist ${playlist?.id} title`></span>
-        </h1>
+          <h1 class="text-5xl font-bold block text-white">
+            {playlist?.title}
+            <span transition:name=`playlist ${playlist?.id} title`></span>
+          </h1>
         </div>
-        
+
         <div class="flex flex-1 items-end">
-            <div class="text-sm text-gray-300 font-normal">
-                <div transition:name=`playlist ${playlist?.id} artists`>
-                    <span>{playlist?.artists.join(",")}</span>
-                </div>
-                <p class="mt-1">
-                    <span class="text-white">{playlistSongs.length} canciones</span>, 3 h aproximadamente
-                </p>
+          <div class="text-sm text-gray-300 font-normal">
+            <div transition:name=`playlist ${playlist?.id} artists`>
+              <span>{playlist?.artists.join(",")}</span>
             </div>
+            <p class="mt-1">
+              <span class="text-white">{playlistSongs.length} canciones</span>,
+              3 h aproximadamente
+            </p>
+          </div>
         </div>
-
-    </div>
+      </div>
     </header>
-    
+
     <div class="pl-6 pt-6">
-        <CardPlayButton id={id} client:load size="large"/>
+      <CardPlayButton id={id} client:load size="large" />
     </div>
-    <div class="relative z-10 px-6 pt-10">
+    <div class="relative z-10 px-6 pt-10"></div>
 
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via zinc-900/80 -z-[1]"
+    >
     </div>
-    
-     <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via zinc-900/80 -z-[1]">
-
-     </div>
-     <section class="p-6">
-        <MusicsTable songs={playlistSongs}/>
-     </section>
-  
-
-    </div>
+    <section class="p-6">
+      <MusicsTable songs={playlistSongs} />
+    </section>
+  </div>
 </Layout>

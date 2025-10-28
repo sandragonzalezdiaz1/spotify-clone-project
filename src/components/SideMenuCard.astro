@@ -9,7 +9,7 @@ const { playlist } = Astro.props;
 
 const { id, title, cover, artists, color } = playlist;
 
-const artistsString = artists.join(", "); //Separar los artistas por comas
+const artistsString = artists.join(", "); 
 ---
 
 <a 
@@ -20,7 +20,6 @@ const artistsString = artists.join(", "); //Separar los artistas por comas
     </picture>
 
     <div class="flex flex-auto flex-col truncate">
-        <!-- truncate se utiliza para que si no entra el titulo completo, lo corte y ponga "..." -->
          <h4 class="text-white text-sm">
             {title}
          </h4>

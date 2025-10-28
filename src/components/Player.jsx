@@ -1,5 +1,5 @@
 import { usePlayerStore } from "@/store/playerStore.js"; //Estado global gestionado con Zustand
-import { useRef, useEffect, useState } from "react"; //Hooks de React
+import { useRef, useEffect, useState } from "react"; 
 import { Slider } from "./Slider"; //Componente de tipo barra deslizante para controlar tiempo/volumen
 
 export const Pause = ({ className }) => (
@@ -71,7 +71,7 @@ const CurrentSong = ({ image, title, artists }) => {
         <h3 className="font-semibold text-base block">{title}</h3>
         <span className="text-sm opacity-80">
           {artists?.join(", ")}{" "}
-          {/* Al principio, como no se reproduce nada artists seria null, para arreglarlo ponemos ? para que en ese caso devuelva undefined */}
+          
         </span>
       </div>
     </div>

@@ -1,7 +1,7 @@
 ---
 import Time from "@/icons/Time.astro";
 import { type Song } from "@/lib/data"; //Importa solo el tipo Song desde el archivo data.js
-//Esto no trae datos, solo la definición del tipo en TypeScript (por ejemplo { id: string, title: string, artist: string, duration: number }).
+//No trae datos, solo la definición del tipo en TypeScript (por ejemplo { id: string, title: string, artist: string, duration: number }).
 
 //Define una interfaz para las props del componente
 interface Props {
@@ -12,7 +12,6 @@ const { songs } = Astro.props; //Aqui el componente recibe las props desde donde
 //Se hace destructuring para extraer directamente songs de Astro.props
 //Ahora dentro del componente podrás iterar sobre songs y renderizarlas
 ---
-
 
 <table class="table-auto text-left min-w-full divide-y divide-gray-500/20">
   <thead class="">
@@ -29,7 +28,7 @@ const { songs } = Astro.props; //Aqui el componente recibe las props desde donde
     {
       songs.map((song, index) => (
         <tr class="text-gray-300 text-sm font-light hover:bg-white/10 overflow-hidden transition duration-300">
-          <td class="px-4 py-2 rounded-tl-lg rounded-bl-lg w-5">{index + 1}</td> {/* Redondeamos los bordes izquierdos, tanto top como bottom de cada celda */}
+          <td class="px-4 py-2 rounded-tl-lg rounded-bl-lg w-5">{index + 1}</td> 
           <td class="px-4 py-2 flex gap-3">
             <picture class="">
               <img

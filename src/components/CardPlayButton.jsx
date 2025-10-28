@@ -19,9 +19,8 @@ export function CardPlayButton({ id, size = 'small' }) {
         }
 
         // PROMISES
-        //Peticion fetch: devuelve una promesa
         fetch(`/api/get-info-playlist.json?id=${id}`) 
-            .then(res => res.json()) //Convertimos la respuesta en json (Podriamos hacerlo con async await)
+            .then(res => res.json()) 
             .then(data => {
                 const { songs, playlist } = data
                 setIsPlaying(true)

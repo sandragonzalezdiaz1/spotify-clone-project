@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { playlists } from '@/lib/data.ts'; /* Si es una variable o funcion hay que poner {} */
+import { playlists } from '@/lib/data.ts'; 
 import PlayListItemCard from '@/components/PlayListItemCard.astro';
-import Greeting from '@/components/Greeting.svelte'; /* Si es un componente no hace falta poner {} */
+import Greeting from '@/components/Greeting.svelte'; 
 
 ---
 
@@ -10,8 +10,7 @@ import Greeting from '@/components/Greeting.svelte'; /* Si es un componente no h
     <div id="playlist-container"
     class="relative transition-all duration-1000 bg-green-600"
     >
-    <!-- <Page Header/> -->
-
+  
      <div class="relative z-10 px-6 pt-10">
         <Greeting client:visible />
         <div class="flex flex-wrap mt-6 gap-4">
@@ -25,8 +24,6 @@ import Greeting from '@/components/Greeting.svelte'; /* Si es un componente no h
      <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via zinc-900/80">
 
      </div>
-
-     <style></style>
 
     </div>
 </Layout>
