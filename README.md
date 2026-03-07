@@ -53,11 +53,6 @@ The goal of this project is to practice **component-based architecture and moder
 ### Playlist page
 ![Playlist](assets/screenshot_playlist.png)
 
-### Music player
-![Player](assets/screenshot_player.png)
-
-### Responsive layout
-![Responsive](assets/screenshot_mobile.png)
 
 ---
 
