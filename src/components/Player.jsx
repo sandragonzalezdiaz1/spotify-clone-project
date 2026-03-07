@@ -1,6 +1,6 @@
-import { usePlayerStore } from "@/store/playerStore.js"; //Estado global gestionado con Zustand
+import { usePlayerStore } from "@/store/playerStore.js"; // Estado global gestionado con Zustand
 import { useRef, useEffect, useState } from "react"; 
-import { Slider } from "./Slider"; //Componente de tipo barra deslizante para controlar tiempo/volumen
+import { Slider } from "./Slider"; // Componente de tipo barra deslizante para controlar tiempo/volumen
 
 export const Pause = ({ className }) => (
   <svg
@@ -59,9 +59,9 @@ export const Volume = () => (
   </svg>
 );
 
-//Creamos un componente de la canción en reproducción
+// Creamos un componente de la canción en reproducción
 const CurrentSong = ({ image, title, artists }) => {
-  //console.log({ image, title });
+  // console.log({ image, title });
   return (
     <div className="flex items-center gap-5 relative overflow-hidden">
       <picture className="w-16 h-16 bg-zinc-800 rounded-md overflow-hidden">
@@ -78,24 +78,24 @@ const CurrentSong = ({ image, title, artists }) => {
   );
 };
 
-//Componente que controla el progreso de la canción
+// Componente que controla el progreso de la canción
 const SongControl = ({ audio }) => {
   const [currentTime, setCurrentTime] = useState(0);
 
-  //Usamos el hook useEffect para escuchar el evento timeupdate del audio
+  // Usamos el hook useEffect para escuchar el evento timeupdate del audio
   useEffect(() => {
     audio.current.addEventListener("timeupdate", handleTimeUpdate);
     return () =>
       audio.current.removeEventListener("timeupdate", handleTimeUpdate);
-  }, []); //Cada vez que cambia el tiempo de reproducción, actualiza el estado currentTime
+  }, []); // Cada vez que cambia el tiempo de reproducción, actualiza el estado currentTime
 
-  //Actualizamos el estado de la barra de audio
+  // Actualizamos el estado de la barra de audio
   const handleTimeUpdate = () => {
-    setCurrentTime(audio.current.currentTime); //currentTime devuelve el tiempo en segundos, hay que transformarlo
-    //Ej: 148s -> 2:28
+    setCurrentTime(audio.current.currentTime); // currentTime devuelve el tiempo en segundos, hay que transformarlo
+    // Ej: 148s -> 2:28
   };
 
-  //Formateamos los segundos en min:seg
+  // Formateamos los segundos en min:seg
   const formatTime = (time) => {
     if (time == null) return "00:00";
 
@@ -106,8 +106,8 @@ const SongControl = ({ audio }) => {
 
   const duration = audio?.current?.duration ?? 0;
 
-  //Muestra el tiempo actual, la barra de progreso y la duración total
-  //Al mover el Slider, cambia currentTime en el audio
+  // Muestra el tiempo actual, la barra de progreso y la duración total
+  // Al mover el Slider, cambia currentTime en el audio
   return (
     <div className="flex gap-x-3 text-xs pt-2">
       <span className="opacity-50 w-12 text-right">
@@ -133,7 +133,7 @@ const SongControl = ({ audio }) => {
 const VolumeControl = () => {
   const volume = usePlayerStore((state) => state.volume);
   const setVolume = usePlayerStore((state) => state.setVolume);
-  const previousVolumeRef = useRef(volume); //Guarda el volumen antes de silenciar
+  const previousVolumeRef = useRef(volume); // Guarda el volumen antes de silenciar
 
   const isVolumeSilenced = volume < 0.1;
 
@@ -142,12 +142,12 @@ const VolumeControl = () => {
       setVolume(previousVolumeRef.current);
     } else {
       previousVolumeRef.current = volume;
-      setVolume(0); //Silenciamos el volumen
+      setVolume(0); // Silenciamos el volumen
     }
   };
 
   return (
-    <div class="flex justify-center gap-x-2">
+    <div className="flex justify-center gap-x-2">
       <button
         className="opacity-70 hover:opacity-100 transition"
         onClick={handleClickVolume}
@@ -173,14 +173,14 @@ const VolumeControl = () => {
 
 //COMPONENTE PRINCIPAL
 export function Player() {
-  //currentMusic es la cancion actual
-  //isPlaying es el estado (play/pause)
-  //audioRef es la referencia al <audio> de HTML
+  // currentMusic es la cancion actual
+  // isPlaying es el estado (play/pause)
+  // audioRef es la referencia al <audio> de HTML
   const { currentMusic, isPlaying, setIsPlaying, volume } = usePlayerStore(
     (state) => state
-  ); //Desestructuramos el estado global
+  ); // Desestructuramos el estado global
 
-  const audioRef = useRef(null); //Creamos una referencia al elemento audio
+  const audioRef = useRef(null); // Creamos una referencia al elemento audio
 
   useEffect(() => {
     isPlaying
@@ -188,25 +188,25 @@ export function Player() {
           console.log("Play interrumpido", err);
         })
       : audioRef.current.pause();
-  }, [isPlaying]); //Cada vez que isPlaying cambie, se ejecuta el useEffect
+  }, [isPlaying]); // Cada vez que isPlaying cambie, se ejecuta el useEffect
 
   useEffect(() => {
-    audioRef.current.volume = volume; //Cada vez que cambiamos el volumen, tenemos que cambiar el volumen del audio
+    audioRef.current.volume = volume; // Cada vez que cambiamos el volumen, tenemos que cambiar el volumen del audio
   }, [volume]);
 
   useEffect(() => {
     const { song, playlist, songs } = currentMusic;
-    //Si tenemos una cancion
+    // Si tenemos una cancion
     if (song) {
       const src = `/music/${playlist?.id}/0${song.id}.mp3`;
-      audioRef.current.src = src; //Cambiamos la fuente del audio
+      audioRef.current.src = src; // Cambiamos la fuente del audio
       audioRef.current.volume = volume;
-      audioRef.current.play(); //Reproducimos la cancion
+      audioRef.current.play(); // Reproducimos la cancion
     }
-  }, [currentMusic]); //Cada vez que currentMusic cambie, se ejecuta el useEffect
+  }, [currentMusic]); // Cada vez que currentMusic cambie, se ejecuta el useEffect
 
   const handleClick = () => {
-    //Cada vez que hacemos click en el boton, cambiamos el estado de isPlaying (true/false)
+    // Cada vez que hacemos click en el boton, cambiamos el estado de isPlaying (true/false)
     setIsPlaying(!isPlaying);
   };
 

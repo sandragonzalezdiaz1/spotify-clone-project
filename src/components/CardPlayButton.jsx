@@ -12,7 +12,7 @@ export function CardPlayButton({ id, size = 'small' }) {
     const isPlayingPlaylist = isPlaying && currentMusic?.playlist.id === id
 
     const handleClick = async () => {
-        //Si esta sonando la playlist, la pausamos
+        // Si está sonando la playlist, la pausamos
         if(isPlayingPlaylist){
             setIsPlaying(false)
             return
@@ -24,7 +24,7 @@ export function CardPlayButton({ id, size = 'small' }) {
             .then(data => {
                 const { songs, playlist } = data
                 setIsPlaying(true)
-                setCurrentMusic({ songs, playlist, song: songs[0] }) //Reproducimos la primera cancion de la playlist
+                setCurrentMusic({ songs, playlist, song: songs[0] }) // Reproducimos la primera cancion de la playlist
                 console.log("Playlist cargada:", { songs, playlist})
             })
         

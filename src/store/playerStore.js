@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
-//Podemos utilizar zustand para cuando necesitemos manejar estados globales
-//Creamos un store para manejar el estado del reproductor de música
+// Podemos utilizar zustand para cuando necesitemos manejar estados globales
+// Creamos un store para manejar el estado del reproductor de música
 export const usePlayerStore = create((set) => ({
     isPlaying: false,
     currentMusic: { playlist: null, song: null, songs: [] },

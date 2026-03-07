@@ -1,16 +1,16 @@
 ---
 import Time from "@/icons/Time.astro";
-import { type Song } from "@/lib/data"; //Importa solo el tipo Song desde el archivo data.js
-//No trae datos, solo la definición del tipo en TypeScript (por ejemplo { id: string, title: string, artist: string, duration: number }).
+import { type Song } from "@/lib/data"; // Importa solo el tipo Song desde el archivo data.js
+// No trae datos, solo la definición del tipo en TypeScript (por ejemplo { id: string, title: string, artist: string, duration: number }).
 
-//Define una interfaz para las props del componente
+// Define una interfaz para las props del componente
 interface Props {
-  songs: Song[]; //songs es un array de objetos Song
+  songs: Song[]; // songs es un array de objetos Song
 }
 
-const { songs } = Astro.props; //Aqui el componente recibe las props desde donde fue usado
-//Se hace destructuring para extraer directamente songs de Astro.props
-//Ahora dentro del componente podrás iterar sobre songs y renderizarlas
+const { songs } = Astro.props; // Aqui el componente recibe las props desde donde fue usado
+// Se hace destructuring para extraer directamente songs de Astro.props
+// Ahora dentro del componente podrás iterar sobre songs y renderizarlas
 ---
 
 <table class="table-auto text-left min-w-full divide-y divide-gray-500/20">
