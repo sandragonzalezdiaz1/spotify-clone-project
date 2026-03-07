@@ -48,10 +48,10 @@ The goal of this project is to practice **component-based architecture and moder
 # 📸 Screenshot
 
 ### Main interface
-![Main interface](assets/screenshot_home.png)
+![Main interface](/src/assets/screenshot_home.png)
 
 ### Playlist page
-![Playlist](assets/screenshot_playlist.png)
+![Playlist](/src/assets/screenshot_playlist.png)
 
 
 ---
