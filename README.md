@@ -13,7 +13,7 @@ The application displays playlists, songs, and a music player UI with dynamic in
 
 # 🌐 Live Demo
 
-https://sandragonzalezdiaz1.github.io/spotify-clone-project
+
 
 ----
 
