@@ -161,8 +161,6 @@ Through this project I practiced:
 - Integrate Spotify API
 - Add search functionality
 - Improve mobile responsiveness
-- Optimize layout for small screens
-- Refine the navigation experience on mobile devices
 - Implement authentication
 
 ---

@@ -109,21 +109,21 @@ const SongControl = ({ audio }) => {
   // Muestra el tiempo actual, la barra de progreso y la duración total
   // Al mover el Slider, cambia currentTime en el audio
   return (
-    <div className="flex gap-x-3 text-xs pt-2">
-      <span className="opacity-50 w-12 text-right">
+    <div className="flex items-center gap-x-2 md:gap-x-3 text-[10px] md:text-xs pt-2 w-full min-w-0 max-w-[520px] px-2">
+      <span className="opacity-50 w-8 md:w-12 text-right shrink-0">
         {formatTime(currentTime)}
       </span>
       <Slider
         value={[currentTime]}
         max={audio?.current?.duration ?? 0}
         min={0}
-        className="flex-1"
+        className="w-full min-w-[80px] flex-1"
         onValueChange={(value) => {
           const [newCurrentTime] = value;
           audio.current.currentTime = newCurrentTime;
         }}
       />
-      <span className="opacity-50 w-12">
+      <span className="opacity-50 w-8 md:w-12 shrink-0">
         {duration ? formatTime(duration) : "0:00"}
       </span>
     </div>
@@ -211,13 +211,13 @@ export function Player() {
   };
 
   return (
-    <div className="flex flex-row justify-between w-full px-2 z-50">
+    <div className="flex items-center justify-center md:flex-row md:justify-between w-full px-2 md:px-4 gap-3 z-50">
       <div className="hidden md:block w-[200px]">
         <CurrentSong {...currentMusic.song} />
       </div>
 
-      <div className="grid place-content-center gap-4 flex-1">
-        <div className="flex justify-center flex-col items-center">
+      <div className="flex flex-1 justify-center min-w-0">
+        <div className="flex flex-col items-center justify-center w-full min-w-0">
           <button
             className="bg-white rounded-full p-2"
             onClick={() => handleClick()}
