@@ -19,7 +19,7 @@ import { Player } from "@/components/Player.jsx";
   </head>
   <body>
     <div id="app" class="relative h-screen p-2 gap-2">
-      <aside class="[grid-area:aside] flex-col flex overflow-y-auto">
+      <aside class="[grid-area:aside] hidden md:flex flex-col overflow-y-auto">
         <AsideMenu />
         </aside>
         <main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto">
@@ -36,14 +36,36 @@ import { Player } from "@/components/Player.jsx";
 </html>
 
 <style>
-  #app {
+   #app {
     display: grid;
     grid-template-areas:
-      "aside main main"
-      "player player player";
-    grid-template-columns: 350px 1fr;
+      "main"
+      "player";
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
+    height: 100vh;
   }
+
+  @media (min-width: 768px) {
+    #app {
+      grid-template-areas:
+        "aside main"
+        "player player";
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: 1fr auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #app {
+      grid-template-areas:
+        "aside main"
+        "player player";
+      grid-template-columns: 350px 1fr;
+      grid-template-rows: 1fr auto;
+    }
+  }
+
 </style>
 <style is:global>
   html {

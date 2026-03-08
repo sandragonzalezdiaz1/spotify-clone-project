@@ -13,7 +13,7 @@ The application displays playlists, songs, and a music player UI with dynamic in
 
 # 🌐 Live Demo
 
-
+https://spotify-clone-app-vert-five.vercel.app/
 
 ----
 
@@ -47,12 +47,23 @@ The goal of this project is to practice **component-based architecture and moder
 
 # 📸 Screenshot
 
+https://spotify-clone-app-vert-five.vercel.app/
+
 ### Main interface
+
 ![Main interface](/src/assets/screenshot_home.png)
 
 ### Playlist page
+
 ![Playlist](/src/assets/screenshot_playlist.png)
 
+### Music player
+
+![Player](/src/assets/screenshot_player.png)
+
+### Responsive layout
+
+![Responsive](/src/assets/screenshot_mobile.png)
 
 ---
 
@@ -150,6 +161,8 @@ Through this project I practiced:
 - Integrate Spotify API
 - Add search functionality
 - Improve mobile responsiveness
+- Optimize layout for small screens
+- Refine the navigation experience on mobile devices
 - Implement authentication
 
 ---

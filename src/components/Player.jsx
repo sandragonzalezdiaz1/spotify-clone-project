@@ -117,7 +117,7 @@ const SongControl = ({ audio }) => {
         value={[currentTime]}
         max={audio?.current?.duration ?? 0}
         min={0}
-        className="w-[400px]"
+        className="flex-1"
         onValueChange={(value) => {
           const [newCurrentTime] = value;
           audio.current.currentTime = newCurrentTime;
@@ -212,7 +212,7 @@ export function Player() {
 
   return (
     <div className="flex flex-row justify-between w-full px-2 z-50">
-      <div className="w-[200px]">
+      <div className="hidden md:block w-[200px]">
         <CurrentSong {...currentMusic.song} />
       </div>
 
@@ -229,7 +229,7 @@ export function Player() {
           <audio ref={audioRef} />
         </div>
       </div>
-      <div className="grid place-content-center">
+      <div className="hidden md:grid place-content-center">
         <VolumeControl />
       </div>
     </div>
