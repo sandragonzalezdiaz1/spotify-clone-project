@@ -47,8 +47,6 @@ The goal of this project is to practice **component-based architecture and moder
 
 # 📸 Screenshot
 
-https://spotify-clone-app-vert-five.vercel.app/
-
 ### Main interface
 
 ![Main interface](/src/assets/screenshot_home.png)
