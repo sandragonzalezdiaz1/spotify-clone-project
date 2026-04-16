@@ -111,7 +111,7 @@ The application follows a **component-based architecture**:
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/spotify-clone-project.git
+git clone https://github.com/sandragonzalezdiaz1/spotify-clone-project.git
 ```
 
 Go into the project folder:
